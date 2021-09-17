@@ -1,0 +1,23 @@
+<aura:component controller="HandWrittenSignController" implements="force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="page" type="Object"/>
+    <ltng:require scripts="{!$Resource.fastclick20180110 + '/ftlabs-fastclick-536219b/lib/fastclick.js'}" afterScriptsLoaded="{!c.afterLoaded}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="container" aura:id="main">
+        <div class="{!'page ' + v.page.page1}">
+            <div class="box960">
+            <div class="sign-container" aura:id="sign-canvas-container">
+                <canvas width="0" height="200" aura:id="sign-canvas"/>
+            </div>
+            </div>
+            <div class="center">
+                <lightning:button label="Reset" onclick="{!c.resetSign}"/>
+                <lightning:button variant="brand" label="Save" onclick="{!c.goto2}"/>
+            </div>
+        </div>
+        <div class="{!'page ' + v.page.page2}">
+            <div class="center" style="padding-top: 10rem;">
+                <p>Saving ...</p>
+            </div>            
+        </div>
+    </div>
+</aura:component>
